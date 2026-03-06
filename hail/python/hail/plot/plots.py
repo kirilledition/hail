@@ -877,7 +877,7 @@ def _collect_scatter_plot_data(
             )
             for point in res
         ])
-        source_pd = source_pd.astype(numeric_expr, copy=False)
+        source_pd = source_pd.astype(numeric_expr)
 
     return source_pd
 
@@ -1384,7 +1384,7 @@ def joint_plot(
                 .groupby(factor_col)
                 .apply(lambda df: np.histogram(df['x' if x_axis else 'y'], density=True))
             )
-            for factor, (dens, edges) in density_data.iteritems():
+            for factor, (dens, edges) in density_data.items():
                 _edges = edges[:-1]
                 xy = (_edges, dens) if x_axis else (dens, _edges)
                 cds = ColumnDataSource({'x': xy[0], 'y': xy[1]})
