@@ -2213,7 +2213,7 @@ def from_numpy(np_dtype):
 
 
 def dtypes_from_pandas(pd_dtype):
-    if pd_dtype is pd.StringDtype:
+    if isinstance(pd_dtype, pd.StringDtype):
         return hl.tstr
     if pd_dtype == np.int64:
         return hl.tint64
